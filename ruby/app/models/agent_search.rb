@@ -39,8 +39,7 @@ class AgentSearch < ApplicationRecord
       price_bool = stat[price_range] > 0
 
       # Filter by experience buying/selling
-      if (self.txn_side == "buying")app/controllers/agent_searches_controller.rb
-        app/controllers/agent_searches_controller.rb
+      if (self.txn_side == "buying")
         txn_bool = stat["buyers"] > 0
       elsif (self.txn_side == "selling")
         txn_bool = stat["sellers"] > 0
