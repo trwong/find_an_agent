@@ -1,3 +1,5 @@
+require 'httparty'
+
 names = [
   "Donald Miller",
   "Rhonda Hunter",
@@ -26,6 +28,11 @@ names = [
   "Michael Zinn"
 ]
 
+URL = "https://randomuser.me/api/?results="
+num_users = names.count
+response = HTTParty.get(URL + "#{num_users}")
+results = response["results"]
+
 brokerages = [
   "CB",
   "C21",
@@ -39,9 +46,9 @@ brokerages = [
   "TCG"
 ]
 
-
-names.each do |name|
-  a = Agent.create(name: name, brokerage: brokerages.sample)
+names.each_with_index do |name, i|
+  profile_picture = results[i]["picture"]["medium"]
+  a = Agent.create(name: name, brokerage: brokerages.sample, profile_picture: profile_picture)
 
   total     = rand(40..150)
   buyers    = rand(13..total)

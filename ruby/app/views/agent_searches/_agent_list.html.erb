@@ -1,5 +1,8 @@
 <%- @agents.each do |agent| %>
   <div class="agent" data-agent-id="<%= agent.id %>">
+    <div class="profile-picture-container">
+      <img class="profile-picture" src="<%= agent.profile_picture %>" />
+    </div>
     <div class="pi">
       <div class="name"><%= agent.name %></div>
       <div class="brokerage"><%= agent.brokerage %></div>

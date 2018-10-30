@@ -1,0 +1,27 @@
+<div class="sort-container">
+  <div>Sort By: </div>
+  <%= form_tag(`/agent_searches/#{@search.id}`, method: :get) do %>
+    <%= hidden_field_tag :sort_by, "buyers" %>
+    <%= submit_tag("Buyers", class: params[:sort_by] == "buyers" ? "selected" : "")%>
+  <% end %>
+
+  <%= form_tag(`/agent_searches/#{@search.id}`, method: :get) do %>
+    <%= hidden_field_tag :sort_by, "sellers" %>
+    <%= submit_tag("Sellers", class: params[:sort_by] == "sellers" ? "selected" : "")%>
+  <% end%>
+
+  <%= form_tag(`/agent_searches/#{@search.id}`, method: :get) do %>
+    <%= hidden_field_tag :sort_by, "SFH" %>
+    <%= submit_tag("SFH", class: params[:sort_by] == "SFH" ? "selected" : "")%>
+  <% end%>
+
+  <%= form_tag(`/agent_searches/#{@search.id}`, method: :get) do %>
+    <%= hidden_field_tag :sort_by, "condo" %>
+    <%= submit_tag("Condo", class: params[:sort_by] == "condo" ? "selected" : "")%>
+  <% end%>
+
+  <%= form_tag(`/agent_searches/#{@search.id}`, method: :get) do %>
+    <%= hidden_field_tag :sort_by, "1m_plus" %>
+    <%= submit_tag("Luxury", class: params[:sort_by] == "1m_plus" ? "selected" : "")%>
+  <% end%>
+</div>

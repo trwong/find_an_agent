@@ -4,15 +4,52 @@ main {
     overflow: auto;
   }
 
+  .sort-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+
+    form {
+      input {
+        border: none;
+        color: blue;
+
+        &:hover {
+          cursor: pointer;
+          color: darkblue;
+          text-decoration: underline;
+        }
+      }
+
+      .selected {
+        color: darkblue;
+        text-decoration: underline;
+      }
+    }
+  }
+
   .agent {
     border: 1px solid #333;
     margin: 10px;
     overflow: auto;
     padding: 10px;
 
+    .profile-picture-container {
+      float: left;
+      margin-right: 8px;
+
+      .profile-picture {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+      }
+    }
+
     .pi {
       float: left;
       width: 150px;
+      margin-bottom: 8px;
+      
     }
 
     .stats {

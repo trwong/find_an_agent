@@ -2,7 +2,17 @@ class AgentSearchesController < ApplicationController
 
   def show
     @search = AgentSearch.find(params[:id])
-    @agents = Agent.where(id: @search.agent_ids.split(","))
+
+    if (params[:sort_by])
+      @search.sort params[:sort_by]
+    end
+
+    # Caution: below line will flatten multi dimensional arrays
+    agents_id_arr = @search.agent_ids.tr('[]', '').split(',').map(&:to_i)
+
+    @agents = Agent.where(id: agents_id_arr).sort_by do |agent|
+      agents_id_arr.index(agent.id)
+    end
   end
 
   def create
@@ -20,5 +30,4 @@ class AgentSearchesController < ApplicationController
     end
 
   end
-
 end
